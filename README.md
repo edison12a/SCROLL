@@ -1,8 +1,7 @@
-SCROLL: A Concept Note
+SCROLL: Can we make a tool that automatically generates documentation and unit-tests for procedural processing programs?
 =======
 
-
-# Concept
+# Concept Note
 The purpose of this tool is to reduce the hustle / tediousness of documenting and writing unit tests
 for real-time data processing programs.
 
@@ -29,4 +28,9 @@ in the order in which functions in the program run, hence the name SCROLL.
 ### Questions
 - What happens to methods that dont explicitly take in input and out but rather just modify class variables when called?
 - Can this be adpted for pandas based projects if successful?
+
+# Does it exist?
+- I know that no such tool exists to automatically generate unit tests and docs in the running order of your code.
+
+
 
