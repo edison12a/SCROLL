@@ -1,7 +1,7 @@
 SCROLL: Can we make a tool that automatically generates documentation and unit-tests for procedural processing programs?
 =======
 
-# Concept Note
+# Concept
 The purpose of this tool is to reduce the hustle / tediousness of documenting and writing unit tests
 for real-time data processing programs.
 
@@ -14,6 +14,9 @@ An ideal use would be a tool which listens to your program running,
     (recorded input/output as examples in docs, 
     recorded input/output to generate unit tests,
     automatically adds type hints to docs by checking type(input))
+
+## Hoe does this run?
+This tool should generate all this by monitoring you running a functional test.
 
 
 # Goal?
