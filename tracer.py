@@ -1,10 +1,10 @@
-
 import inspect
 
 
 class Tracer:
     def __init__(self):
-        pass
+        self.traces = {}
+        self.call_number = 1
 
     def __call__(self, frame, event, arg):
         code = frame.f_code
@@ -22,9 +22,17 @@ class Tracer:
         #     return
 
         if event == 'call':
+            docstring = None
             arg_names = code.co_varnames[0:code.co_argcount]
             arg_dict = frame.f_locals
+            filename = frame.f_code.co_filename
             print('CALL ARGS', func_name, arg_dict)
+            # get doctstring
+            func_details = frame.f_back.f_globals.get(name)
+            if func_details:
+                docstring = func_details.__doc__
+            # get function class
+            class_name = self.get_class_from_frame(frame)
             # called by?
             caller = frame.f_back
             if caller:
@@ -32,17 +40,30 @@ class Tracer:
                 caller_line_no = caller.f_lineno
                 caller_filename = caller.f_code.co_filename
                 print('CALLER', caller_func, caller_line_no, caller_filename)
+
+            self.traces[func_name] = dict(
+                name=func_name,
+                filename=filename,
+                caller=caller_func,
+                caller_file=caller_filename,
+                call_args=arg_names,
+                call_number=self.call_number,
+                docstring=docstring,
+                class_name=class_name,
+            )
+            self.call_number = +1
             return self
 
         elif event == 'return':
-            doc = None
-            name = code.co_name
-            func_details = frame.f_back.f_globals.get(name)
-            if func_details:
-                doc = func_details.__doc__
             print('RETURN ARGS', func_name, arg)
             # print('__doc__', doc)
-            print('class', self.get_class_from_frame(frame))
+            call_dict = self.traces.get(func_name)
+            call_dict.update(
+                dict(
+                    return_value=arg,
+                )
+            )
+            self.traces[func_name] = call_dict
             return self
 
     def get_class_from_frame(self, frm):
