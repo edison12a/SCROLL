@@ -24,6 +24,8 @@ in the order in which functions in the program run, hence the name SCROLL.
 pip install scroll
 ```
 
+To install using wheel files, Check in [Distribution files](./dist)
+
 
 ## Example Usage
 
