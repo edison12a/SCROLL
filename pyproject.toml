@@ -6,6 +6,8 @@ build-backend = "flit.buildapi"
 module = "scroll"
 author = "Edison Abahurire"
 author-email = "abahedison@gmail.com"
+home-page = "https://scroll.readthedocs.io/"
+Documentation = "https://github.com/SimiCode/scroll/docs"
 home-page = "https://github.com/SimiCode/scroll"
 requires=[
 ]
@@ -14,9 +16,11 @@ description-file="README.md"
 classifiers=[
     "Intended Audience :: Developers",
     "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python",
     "Programming Language :: Python :: 3.6",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Topic :: Software Development :: Libraries :: Python Modules",
+    "Python :: Implementation :: CPython"
 ]
