@@ -35,7 +35,7 @@ TODO
 
 ## Contributing
 
-[CONTRIBUTING GUIDE](./CONTRIBUTING.MD)
+To get started contributing, Visit the [CONTRIBUTING GUIDE](./CONTRIBUTING.MD)
 
 
 ## Contributors and acknowledgment
@@ -53,5 +53,6 @@ TODO
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
+
 
 Packaged with: [Flit](https://buildmedia.readthedocs.org/media/pdf/flit/latest/flit.pdf)
