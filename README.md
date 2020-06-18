@@ -1,39 +1,44 @@
-SCROLL: Can we make a tool that automatically generates documentation and unit-tests for procedural processing programs?
+SCROLL: Automatically generates documentation and unit-tests for python programs
 =======
-
-# Concept
-The purpose of this tool is to reduce the hustle / tediousness of documenting and writing unit tests
-for real-time data processing programs.
+**Built with Data processing programs in mind**
 
 
-## How will it achive this
-An ideal use would be a tool which listens to your program running, 
-- registers the input and output of the functions, once for each function to save memory
-- records the functions order of running
-- generates documentation and tests in this running order using the 
-    (recorded input/output as examples in docs, 
-    recorded input/output to generate unit tests,
-    automatically adds type hints to docs by checking type(input))
-
-## Hoe does this run?
-This tool should generate all this by monitoring you running a functional test.
+[![PyPI version](https://badge.fury.io/py/scroll.svg)](https://badge.fury.io/py/scroll)
+[![Downloads](https://pepy.tech/badge/scroll)](https://pepy.tech/project/scroll)
+[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 
-# Goal?
+## How it works
+This tool monitors your function calls and returns while you "exercise" you program (i.e run functional tests).
+It will collect this information (traces), record the order in which your functions run and generate documentations / tests using that information.
+
+
+# Design concept
 The final goal is to enable a developer/user browser through documentation that flows
 in the order in which functions in the program run, hence the name SCROLL.
 
 
-### Side effects
-- I think this will make a developer break down their code a more to ducument as many steps (details) of the process as possible
+## Installation
+
+```bash
+pip install scroll
+```
 
 
-### Questions
-- What happens to methods that dont explicitly take in input and out but rather just modify class variables when called?
-- Can this be adpted for pandas based projects if successful?
+## Example Usage
 
-# Does it exist?
-- I know that no such tool exists to automatically generate unit tests and docs in the running order of your code.
+```python
+TODO     
+```
+
+## Contributing
+
+[CONTRIBUTING GUIDE](./CONTRIBUTING.MD)
+
+
+## Contributors and acknowledgment
+
+1. Edison Abahurire [simicode](https://github.com/SimiCode) - BDFL
 
 
 ## Similar Libraries that do Runtime-Introspection:
@@ -41,3 +46,10 @@ in the order in which functions in the program run, hence the name SCROLL.
 2. (auger)[https://github.com/laffra/auger] for Auto Unit-test generation
 3. (MonkeyType)[https://github.com/Instagram/MonkeyType] for auto Auto Type hinting /  Annotation
 4. (hypothesis)[https://hypothesis.readthedocs.io/en/latest/index.html] for Auto test-case generation
+
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
+
+Packaged with: [Flit](https://buildmedia.readthedocs.org/media/pdf/flit/latest/flit.pdf)
