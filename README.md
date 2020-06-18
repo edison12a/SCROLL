@@ -44,10 +44,10 @@ TODO
 
 
 ## Similar Libraries that do Runtime-Introspection:
-1. (pythoscope)[https://github.com/mkwiatkowski/pythoscope] for Auto unit-test generation
-2. (auger)[https://github.com/laffra/auger] for Auto Unit-test generation
-3. (MonkeyType)[https://github.com/Instagram/MonkeyType] for auto Auto Type hinting /  Annotation
-4. (hypothesis)[https://hypothesis.readthedocs.io/en/latest/index.html] for Auto test-case generation
+1. [pythoscope](https://github.com/mkwiatkowski/pythoscope) for Auto unit-test generation
+2. [auger](https://github.com/laffra/auger) for Auto Unit-test generation
+3. [MonkeyType](https://github.com/Instagram/MonkeyType) for auto Auto Type hinting /  Annotation
+4. [hypothesis](https://hypothesis.readthedocs.io/en/latest/index.html) for Auto test-case generation
 
 
 ## License
