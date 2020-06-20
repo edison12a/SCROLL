@@ -1,3 +1,7 @@
+"""SCROLL: Automatically generates documentation and unit-tests for python programs"""
+__version__ = "2020.6.15"
+
+
 import click
 import runpy
 from scroll.runner import MyContextManager

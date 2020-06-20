@@ -1,0 +1,35 @@
+[build-system]
+requires = ["flit"]
+build-backend = "flit.buildapi"
+
+[tool.flit.scripts]
+scroll = "scroll:scroll"
+
+[tool.flit.metadata]
+module = "scroll"
+author = "Edison Abahurire"
+author-email = "abahedison@gmail.com"
+home-page = "https://github.com/SimiCode/scroll"
+requires=[
+    "click",
+]
+requires-python=">=3.6"
+description-file="README.md"
+classifiers=[
+    "Intended Audience :: Developers",
+    "Development Status :: 4 - Beta",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    'Programming Language :: Python :: Implementation :: CPython',
+    "License :: OSI Approved :: MIT License",
+]
+keywords="scroll documentation unit tests"
+
+[tool.flit.metadata.urls]
+Bug-Tracker="https://github.com/SimiCode/SCROLL/issues"
+Documentation="https://github.com/SimiCode/SCROLL/README.md"
+Source-Code="https://github.com/SimiCode/SCROLL/scroll"
