@@ -13,22 +13,24 @@ class Tracer:
         func_filename = code.co_filename
 
         # # Ignore write() calls from printing
-        # if func_name == 'write':
-        #     return
-
+        if func_name in ('write', '_shutdown'):
+            return
         # # Ignore calls not in this module
-        # if not func_filename.endswith('example.py'):
-        # if 'venv' in func_filename:
-        #     return
+        if 'venv' in func_filename:
+            return
+        if 'python3.8' in func_filename:
+            return
+
+        print('func_filename', func_filename)
 
         if event == 'call':
             docstring = None
             arg_names = code.co_varnames[0:code.co_argcount]
             arg_dict = frame.f_locals
             filename = frame.f_code.co_filename
-            print('CALL ARGS', func_name, arg_dict)
+            # print('CALL ARGS', func_name, arg_dict)
             # get doctstring
-            func_details = frame.f_back.f_globals.get(name)
+            func_details = frame.f_back.f_globals.get(func_name)
             if func_details:
                 docstring = func_details.__doc__
             # get function class
@@ -39,7 +41,7 @@ class Tracer:
                 caller_func = caller.f_code.co_name
                 caller_line_no = caller.f_lineno
                 caller_filename = caller.f_code.co_filename
-                print('CALLER', caller_func, caller_line_no, caller_filename)
+                # print('CALLER', caller_func, caller_line_no, caller_filename)
 
             self.traces[func_name] = dict(
                 name=func_name,
@@ -51,13 +53,12 @@ class Tracer:
                 docstring=docstring,
                 class_name=class_name,
             )
-            self.call_number = +1
+            self.call_number += 1
             return self
 
         elif event == 'return':
-            print('RETURN ARGS', func_name, arg)
-            # print('__doc__', doc)
-            call_dict = self.traces.get(func_name)
+            # print('RETURN ARGS', func_name, arg)
+            call_dict = self.traces.get(func_name, {})
             call_dict.update(
                 dict(
                     return_value=arg,
