@@ -7,11 +7,10 @@ so that the program can be run as ..
 scroll myprogram.py
 '''
 import sys
-from scroll.tracer import Tracer
 
 
 class MyContextManager():
-    def __init__(self):
+    def __init__(self, Tracer):
         self.tracer = Tracer()
 
     def __enter__(self):

@@ -1,6 +1,8 @@
 import datetime
 
 class Age:
+    """test Ager DOCstring"""
+
     def __init__(self):
         pass
 
@@ -43,6 +45,3 @@ def main(yob, weight, height):
         bmi=calculate_bmi(weight, height)
     )
     return credentials
-
-
-creds = main(1993, 71, 1.79)
