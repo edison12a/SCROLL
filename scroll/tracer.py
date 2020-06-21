@@ -5,7 +5,6 @@ class Tracer:
     def __init__(self):
         self.traces = {}
         self.call_number = 1
-        self.main_method = ''
 
     def __call__(self, frame, event, arg):
         code = frame.f_code
@@ -17,10 +16,14 @@ class Tracer:
         if func_name in ('write', '_shutdown'):
             return
         # # Ignore calls not in this module
-        if 'venv' in func_filename:
+        if 'venv' in func_filename \
+            or func_filename.startswith('<') \
+            or func_name.startswith('<') \
+            or 'python3.8' in func_filename:
             return
-        if 'python3.8' in func_filename:
-            return
+
+        # everuthing beyond this point gets evaluated
+        print(func_filename)
 
         if event == 'call':
             docstring = None
@@ -74,10 +77,6 @@ class Tracer:
                 class_name=class_name,
                 calls=set(),
             )
-
-            # get the main entry point of this module
-            if self.call_number == 1:
-                self.main_method = func_name
 
             self.call_number += 1
             return self

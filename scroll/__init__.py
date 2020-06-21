@@ -17,5 +17,16 @@ def scroll(filename):
     with MyContextManager(Tracer) as manager:
         runpy.run_path(filename, run_name='__main__')
     sys.settrace(None)
-    pprint.pprint(manager.traces)
-    print(manager.main_method)
+
+    collected_traces = manager.traces
+    pprint.pprint(collected_traces)
+    
+    # get the leading/main function
+    collected_traces = {v['call_number']: v for k, v in collected_traces.items()}
+    keys = sorted(list(collected_traces))
+    for num in keys:
+        if collected_traces[num]['calls']:
+            main_method = collected_traces[num]['name']
+            break
+
+    print(main_method)
