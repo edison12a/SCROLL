@@ -12,7 +12,6 @@ class Tracer:
         func_name = code.co_name
         func_line_no = frame.f_lineno
         func_filename = code.co_filename
-        print(func_name)
 
         # # Ignore write() calls from printing
         if func_name in ('write', '_shutdown'):
@@ -60,10 +59,6 @@ class Tracer:
                     callees.add(key_name)
                     self.traces[caller_func]['calls'] = callees
 
-                # get the main entry poiint of this module
-                if func_name not in ['__exit__', '__init__'] and caller_func == '<module>':
-                    self.main_method = func_name
-
             else:
                 print(caller, func_name)
 
@@ -79,6 +74,11 @@ class Tracer:
                 class_name=class_name,
                 calls=set(),
             )
+
+            # get the main entry point of this module
+            if self.call_number == 1:
+                self.main_method = func_name
+
             self.call_number += 1
             return self
 

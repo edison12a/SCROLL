@@ -6,6 +6,7 @@ import click
 import runpy
 from scroll.runner import MyContextManager
 from scroll.tracer import Tracer
+import pprint
 
 
 @click.command()
@@ -16,5 +17,5 @@ def scroll(filename):
     with MyContextManager(Tracer) as manager:
         runpy.run_path(filename, run_name='__main__')
     sys.settrace(None)
-    print(manager.traces)
+    pprint.pprint(manager.traces)
     print(manager.main_method)
