@@ -1,5 +1,5 @@
 """SCROLL: Automatically generates documentation and unit-tests for python programs"""
-__version__ = "2020.6.16"
+__version__ = "2020.6.17"
 
 import sys
 import click
@@ -26,7 +26,7 @@ def scroll(filename):
     keys = sorted(list(collected_traces))
     for num in keys:
         if collected_traces[num]['calls']:
-            main_method = collected_traces[num]['name']
+            main_method = collected_traces[num]['function_name']
             break
 
     print(main_method)

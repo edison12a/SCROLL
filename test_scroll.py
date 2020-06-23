@@ -32,7 +32,7 @@ collected_traces = {v['call_number']: v for k, v in collected_traces.items()}
 keys = sorted(list(collected_traces))
 for num in keys:
     if collected_traces[num]['calls']:
-        main_method = collected_traces[num]['name']
+        main_method = collected_traces[num]['function_name']
         break
 
 print(main_method)
