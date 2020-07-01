@@ -6,6 +6,7 @@ import click
 import runpy
 from scroll.runner import MyContextManager
 from scroll.tracer import Tracer
+from scroll.generators import generate_docs
 import pprint
 
 
@@ -20,13 +21,5 @@ def scroll(filename):
 
     collected_traces = manager.traces
     pprint.pprint(collected_traces)
-    
-    # get the leading/main function
-    collected_traces = {v['call_number']: v for k, v in collected_traces.items()}
-    keys = sorted(list(collected_traces))
-    for num in keys:
-        if collected_traces[num]['calls']:
-            main_method = collected_traces[num]['function_name']
-            break
-
-    print(main_method)
+    # write assets to files
+    generate_docs(collected_traces)

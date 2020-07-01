@@ -28,10 +28,31 @@ To install using wheel files, Check in [Distribution files](./dist)
 
 
 ## Example Usage
+Lets say your file which contains the main entry function is called main.py
 
-```python
-TODO     
+### An example main file with an entry function
 ```
+# main.py
+
+def run():
+    '''this is your singlr entry function'''
+    # your code here
+
+
+if __name__ == '__main__':
+    run()
+```
+
+### Run the file using scroll on bash 
+```bash
+scroll main.py
+```
+
+
+## How about some guidelines?
+- There should be only one main entry function into you code
+- 
+
 
 ## Contributing
 
@@ -39,8 +60,7 @@ To get started contributing, Visit the [CONTRIBUTING GUIDE](./CONTRIBUTING.MD)
 
 
 ## Contributors and acknowledgment
-
-1. Edison Abahurire [simicode](https://github.com/SimiCode) - BDFL
+1. Edison Abahurire [simicode](https://github.com/SimiCode)
 
 
 ## Similar Libraries that do Runtime-Introspection:
@@ -51,8 +71,11 @@ To get started contributing, Visit the [CONTRIBUTING GUIDE](./CONTRIBUTING.MD)
 
 
 ## License
-
 [MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Credits
+3. [MonkeyType](https://github.com/Instagram/MonkeyType): Whan I got this idea, My first option was to just plagiarise their code ;)
 
 
 Packaged with: [Flit](https://buildmedia.readthedocs.org/media/pdf/flit/latest/flit.pdf)
