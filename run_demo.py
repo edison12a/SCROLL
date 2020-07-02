@@ -1,7 +1,7 @@
 import sys
 from scroll.tracer import Tracer
 from scroll.runner import MyContextManager
-from demo import main
+from demo.demo import main
 import pprint
 from scroll.generators import generate_docs
 
@@ -15,4 +15,4 @@ if __name__ == '__main__':
     # do stuff with traces
     collected_traces = manager.traces
     pprint.pprint(collected_traces)
-    generate_docs(collected_traces)
+    generate_docs(collected_traces, directory='demo')
