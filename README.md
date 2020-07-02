@@ -53,6 +53,9 @@ scroll main.py
 - There should be only one main entry function into you code
 - 
 
+## To-Do
+- add creating of url with class name / func name on it
+- 
 
 ## Contributing
 

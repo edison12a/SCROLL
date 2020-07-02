@@ -61,6 +61,7 @@
 
 .calls {
   padding-left: 55px;
+  color: #007bff !important;
 }
 
 table {
@@ -73,10 +74,12 @@ table {
 
 .args {
   margin-bottom: 3px;
+  font-weight: bold;
 }
 
 pre {
   margin-bottom: 0 !important;
+  margin-left: 40px;
 }
 
 .container-fluid {
@@ -91,3 +94,12 @@ pre {
 .func-caller {
   font-size: 18px;
 }
+
+.to-right {
+  text-align: right;
+}
+
+.code {
+  font-weight: normal;
+}
+

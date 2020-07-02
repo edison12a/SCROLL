@@ -1,14 +1,13 @@
 import json
+import os
+import shutil
+
 
 def generate_docs(collected_traces):
     # convert sets to list to avoid JSON serialization error
     for trace_name in collected_traces:
-        print(collected_traces[trace_name]['calls'])
-        collected_traces[trace_name]['calls'] = list(collected_traces[trace_name]['calls'])
-
-    # write to main file
-    with open('traces.json', 'w') as tr:
-        tr.write(json.dumps(collected_traces))
+        call_list = list(collected_traces[trace_name]['calls'])
+        collected_traces[trace_name]['calls'] = call_list
 
     # get the leading/entry function
     numbered_traces = {v['call_number']: v for k, v in collected_traces.items()}
@@ -21,16 +20,34 @@ def generate_docs(collected_traces):
     collected_traces['entry_function'] = entry_function
     print('entry_function:', entry_function)
 
+
     # create order of functions // classes of docs html file
     order_of_functions = []
 
     def get_calls(trace_name):
+        # print(trace_name)
         trace = collected_traces[trace_name]
+        # print(trace['calls'])
         for call in trace['calls']:
             order_of_functions.append(collected_traces[call]['function_name'])
             get_calls(collected_traces[call]['function_name'])
 
     order_of_functions.append(entry_function)
     get_calls(entry_function)
-
     print(order_of_functions)
+
+
+    # generate documentation in docs folder
+    shutil.copy('scroll/templates/index.html', 'docs')
+    shutil.copy('scroll/templates/scroll.css', 'docs')
+
+    if not os.path.exists('docs'):
+        os.makedirs('docs')
+
+    with open('docs/traces_data.js', 'w') as tr:
+        tr.write('let traces='+json.dumps(collected_traces))
+
+    with open('docs/functions_data.js', 'w') as fc:
+        fc.write('let functions='+json.dumps(order_of_functions))
+
+

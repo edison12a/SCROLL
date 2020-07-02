@@ -1,25 +1,29 @@
 import datetime
 
 class Age:
-    """test Ager DOCstring"""
+    """
+    test Ager DOCstring
+    """
 
     def __init__(self):
         pass
 
     def get_age(self, yob):
-        """Calculate age using date of birth.
+        """
+        Calculate age using date of birth.
             Args:
                 yob: The year of birth.
             Returns:
                 age: indicates how old the person is.
-            """
+        """
         year_today = datetime.datetime.today().year
         age = year_today-yob
         return yob
 
 
 def calculate_bmi(weight, height):
-    """Calculate body mass index.
+    """
+    Calculate body mass index.
         Args:
             wieght: in kilograms.
             height: in meters.
@@ -31,7 +35,8 @@ def calculate_bmi(weight, height):
 
 
 def main(yob, weight, height):
-    """Generate the health credentials of a user based on input.
+    """
+    Generate the health credentials of a user based on input.
         Args:
             yob: The year of birth.
             wieght: in kilograms.
@@ -40,9 +45,11 @@ def main(yob, weight, height):
             age, bmi: as a dictionary.
     """
     ager = Age()
+    age=ager.get_age(yob)
+    bmi=calculate_bmi(weight, height)
     credentials = dict(
-        age=ager.get_age(yob),
-        bmi=calculate_bmi(weight, height)
+        age=age,
+        bmi=bmi,
     )
     return credentials
 
