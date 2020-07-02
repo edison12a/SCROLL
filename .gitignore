@@ -4,3 +4,4 @@ build
 dist
 scroll.egg-info
 *.json
+docs/
