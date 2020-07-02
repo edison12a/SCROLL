@@ -3,7 +3,7 @@ import os
 import shutil
 
 
-def generate_docs(collected_traces, directory=''):
+def generate_docs(collected_traces, directory='.'):
     # convert sets to list to avoid JSON serialization error
     for trace_name in collected_traces:
         call_list = list(collected_traces[trace_name]['calls'])
