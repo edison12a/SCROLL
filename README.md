@@ -54,8 +54,8 @@ scroll main.py
 - 
 
 ## To-Do
-- add creating of url with class name / func name on it
-- 
+- add creating of url with class name / func name ancored on it
+- add creating of SCROLL.md that has scroll of all functions
 
 ## Contributing
 
