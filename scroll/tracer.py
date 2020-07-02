@@ -21,7 +21,7 @@ class Tracer:
         if 'venv' in func_filename \
             or func_filename.startswith('<') \
             or func_name.startswith('<') \
-            or 'python3.8' in func_filename:
+            or 'python' in func_filename:
             return
 
         # everuthing beyond this point gets evaluated
