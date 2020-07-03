@@ -4,6 +4,7 @@ import shutil
 
 
 def generate_docs(collected_traces, directory='.'):
+    package_dir = os.path.dirname(__file__)
     # convert sets to list to avoid JSON serialization error
     for trace_name in collected_traces:
         call_list = list(collected_traces[trace_name]['calls'])
@@ -18,10 +19,8 @@ def generate_docs(collected_traces, directory='.'):
             break
     # add entry function to traces
     collected_traces['entry_function'] = entry_function
-    print('entry_function:', entry_function)
 
-
-    # create order of functions // classes of docs html file
+     # create order of functions // classes of docs html file
     order_of_functions = []
 
     def get_calls(trace_name):
@@ -41,8 +40,8 @@ def generate_docs(collected_traces, directory='.'):
         os.makedirs(directory+'/docs')
 
     # generate documentation in docs folder
-    shutil.copy('scroll/templates/index.html', directory+'/docs')
-    shutil.copy('scroll/templates/scroll.css', directory+'/docs')
+    shutil.copy(package_dir+'/templates/index.html', directory+'/docs')
+    shutil.copy(package_dir+'/templates/scroll.css', directory+'/docs')
 
     with open(directory+'/docs/traces_data.js', 'w') as tr:
         tr.write('let traces='+json.dumps(collected_traces))
