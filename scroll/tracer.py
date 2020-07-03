@@ -1,5 +1,6 @@
 import inspect
 import os
+from scroll.helpers import OrderedSet
 
 class Tracer:
     def __init__(self):
@@ -20,7 +21,7 @@ class Tracer:
         if 'venv' in func_filename \
             or func_filename.startswith('<') \
             or func_name.startswith('<') \
-            or 'python3.8' in func_filename:
+            or 'python' in func_filename:
             return
 
         # everuthing beyond this point gets evaluated
@@ -78,7 +79,7 @@ class Tracer:
 
                 # record the call in the caller dict
                 if self.traces.get(caller_key_name):
-                    # get the set of the functions called by the mother function and 
+                    # get the set of the functions called by the mother function and
                     # add this current function
                     callees = self.traces[caller_key_name]['calls']
                     callees.add(key_name)
@@ -95,9 +96,9 @@ class Tracer:
                 # caller_file=caller_filename.replace(self.cwd, ''),
                 call_args=arg_values,
                 call_number=self.call_number,
-                docstring=docstring, 
+                docstring=docstring,
                 class_name=class_name,
-                calls=set(),
+                calls=OrderedSet(),
             )
 
             self.call_number += 1
