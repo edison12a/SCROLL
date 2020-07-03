@@ -78,7 +78,7 @@ To get started contributing, Visit the [CONTRIBUTING GUIDE](./CONTRIBUTING.MD)
 
 
 ## Credits
-3. [MonkeyType](https://github.com/Instagram/MonkeyType): Whan I got this idea, My first option was to just plagiarise their code ;)
+- [MonkeyType](https://github.com/Instagram/MonkeyType): When I got this idea, My first option was to just plagiarise their code ;)
+I also learned a lot from issue-conversations with [@carljm](https://github.com/carljm).
+- [Flit](https://buildmedia.readthedocs.org/media/pdf/flit/latest/flit.pdf) which this wonderful library is packaged with.
 
-
-Packaged with: [Flit](https://buildmedia.readthedocs.org/media/pdf/flit/latest/flit.pdf)
