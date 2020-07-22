@@ -113,7 +113,15 @@ class Tracer:
         if docstring is None:
             try:
                 class_obj = self.get_class_obj(frame)
-                class_method = class_obj.__dict__[func_name]
+                try:
+                    class_method = class_obj.__dict__[func_name]
+                except KeyError as e:
+                    for inherited_class in class_obj.__bases__:
+                        try:
+                            class_method = inherited_class.__dict__[func_name]
+                            break
+                        except KeyError:
+                            pass
                 docstring = class_method.__doc__
             except AttributeError:
                 pass
