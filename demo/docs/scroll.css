@@ -5,101 +5,90 @@
  */
 
  #wrapper {
-    overflow-x: hidden;
- }
-
+	overflow-x: hidden;
+}
 #sidebar-wrapper {
-  min-height: 100vh;
-  margin-left: -35rem;
-  -webkit-transition: margin .25s ease-out;
-  -moz-transition: margin .25s ease-out;
-  -o-transition: margin .25s ease-out;
-  transition: margin .25s ease-out;
+	min-height: 100vh;
+	margin-left: -35rem;
+	-webkit-transition: margin .25s ease-out;
+	-moz-transition: margin .25s ease-out;
+	-o-transition: margin .25s ease-out;
+	transition: margin .25s ease-out;
 }
-
-
 .list-group-item {
-  padding-top: .25rem !important;
-  padding-bottom: .25rem !important;
+	padding-top: .25rem !important;
+	padding-bottom: .25rem !important;
 }
-
 #sidebar-wrapper .sidebar-heading {
-  padding: 0.875rem 1.25rem;
-  font-size: 1.2rem;
+	padding: 0.875rem 1.25rem;
+	font-size: 1.2rem;
 }
-
-#sidebar-wrapper .list-group {
-  width: 15rem;
+#sidebar {
+	overflow: scroll;
+	height: 100vh;
 }
-
 #page-content-wrapper {
-  min-width: 100vw;
+	min-width: 100vw;
+	/* position: fixed; */
+	position: -webkit-sticky;
+	position: sticky;
+	float: left;
 }
-
 #wrapper.toggled #sidebar-wrapper {
-  margin-left: 0;
+	margin-left: 0;
 }
-
 @media (min-width: 768px) {
-  #sidebar-wrapper {
-    margin-left: 0;
-  }
-
-  #page-content-wrapper {
-    min-width: 0;
-    width: 100%;
-  }
-
-  #wrapper.toggled #sidebar-wrapper {
-    margin-left: -15rem;
-  }
+	#sidebar-wrapper {
+		margin-left: 0;
+	}
+	#page-content-wrapper {
+		min-width: 0;
+		width: 100%;
+	}
+	#wrapper.toggled #sidebar-wrapper {
+		margin-left: -15rem;
+	}
 }
-
 #space {
-  margin-left: auto;
+	margin-left: auto;
 }
-
 .calls {
-  padding-left: 55px;
-  color: #007bff !important;
+	padding-left: 55px;
+	color: #007bff !important;
 }
-
+.callers {
+	padding-left: 5px;
+	color: #007bff !important;
+}
 table {
-  margin-left: 55px;
+	margin-left: 55px;
 }
-
 .return {
-  padding-top: 10px;;
+	padding-top: 10px;
+	;
 }
-
 .args {
-  margin-bottom: 3px;
-  font-weight: bold;
+	margin-bottom: 3px;
+	font-weight: bold;
 }
-
 pre {
-  margin-bottom: 0 !important;
-  margin-left: 40px;
+	margin-bottom: 0 !important;
+	margin-left: 40px;
 }
-
 .container-fluid {
-  padding-left: 50px !important;
-  padding-top: 25px;;
+	padding-left: 50px !important;
+	padding-top: 25px;
+	;
 }
-
 .func {
-  font-size: 25px;
+	font-size: 25px;
 }
-
 .func-caller {
-  font-size: 18px;
+	font-size: 18px;
 }
-
 .to-right {
-  text-align: right;
+	text-align: right;
 }
-
 .code {
-  font-weight: normal;
+	font-weight: normal;
 }
-

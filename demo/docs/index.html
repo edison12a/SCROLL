@@ -94,7 +94,7 @@
   <script src="./traces_data.js"></script>
 
   <script>
-    console.log(functions); // this will show the info it in firebug console
+    // console.log(functions); // this will show the info in firebug console
     const sidebar = document.getElementById('sidebar');
     functions.forEach(function (item, index) {
       // console.log(item, index);
@@ -109,9 +109,9 @@
     });
 
     display_func_name = (class_name) => {
-      console.log(class_name);
+      // console.log(class_name);
       func_trace = traces[class_name];
-      console.log(func_trace);
+      // console.log(func_trace);
       var args_str = ''
       call_args = func_trace['call_args']
       for (var item in call_args) {
@@ -121,14 +121,15 @@
       var calls_str = ''
       func_calls = func_trace['calls']
       func_calls.forEach(function (item, index) {
-        console.log(item)
+        // console.log(item)
         calls_str = calls_str + `<a class='calls' name="${item}" onclick="display_func(this)">${item}()</a><br>`;
-        console.log(calls_str)
+        // console.log(calls_str)
       });
       document.getElementById('func-calls').innerHTML = calls_str;
       document.getElementById('arg-types').innerHTML = args_str;
       document.getElementById('func').innerHTML = func_trace['function_name'];
-      document.getElementById('func-caller').innerHTML = func_trace['caller'];
+      let func_caller = func_trace['caller'];
+      document.getElementById('func-caller').innerHTML = `<a class='callers' name="${func_caller}" onclick="display_func(this)">${func_caller}()</a><br>`
       document.getElementById('func-code').innerHTML = func_trace['docstring'];
       document.getElementById('return').innerHTML = func_trace['return_type'];
       document.getElementById('file-name').innerHTML = '.' + func_trace['filename'];
@@ -136,9 +137,9 @@
 
     display_func = (e) => {
       let class_name = e.name;
-      console.log(class_name);
+      // console.log(class_name);
       func_trace = traces[class_name];
-      console.log(func_trace);
+      // console.log(func_trace);
       var args_str = ''
       call_args = func_trace['call_args']
       for (var item in call_args) {
@@ -148,19 +149,23 @@
       var calls_str = ''
       func_calls = func_trace['calls']
       func_calls.forEach(function (item, index) {
-        console.log(item)
+        // console.log(item)
         calls_str = calls_str + `<a class='calls' name='${item}' onclick='display_func(this)'>${item}()</a><br>`;
-        console.log(calls_str)
+        // console.log(calls_str)
       });
       document.getElementById('func-calls').innerHTML = calls_str;
       document.getElementById('arg-types').innerHTML = args_str;
       document.getElementById('func').innerHTML = func_trace['function_name'];
-      document.getElementById('func-caller').innerHTML = func_trace['caller'];
+      let func_caller = func_trace['caller'];
+      document.getElementById('func-caller').innerHTML = `<a class='callers' name="${func_caller}" onclick="display_func(this)">${func_caller}()</a><br>`
       document.getElementById('func-code').innerHTML = func_trace['docstring'];
       document.getElementById('return').innerHTML = func_trace['return_type'];
       document.getElementById('file-name').innerHTML = '.' + func_trace['filename'];
     };
 
+    console.log(functions[0])
+    functions[0]['caller'] = ''
+    console.log(functions[0])
     display_func_name(functions[0]);
 
   </script>
