@@ -3,7 +3,10 @@ import os
 import shutil
 
 
-def generate_docs(collected_traces, directory='.'):
+def generate_docs(collected_traces, directory):
+    # put docs in current working directory
+    if not directory:
+        directory='.'
     package_dir = os.path.dirname(__file__)
     # convert sets to list to avoid JSON serialization error
     for trace_name in collected_traces:
