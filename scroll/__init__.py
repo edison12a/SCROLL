@@ -24,6 +24,8 @@ def scroll(filename):
     sys.settrace(None)
     click.echo(f'SCROLL: Traces collected')
     collected_traces = manager.traces
+    # pickle.dump(collected_traces, open( "collected_traces.pkl", "wb"))
+    # collected_traces = pickle.load(open( "collected_traces.pkl", "rb" ))
     pprint.pprint(collected_traces)
     # generate docs and write to files
     directory = os.path.dirname(filename)

@@ -71,29 +71,32 @@ class Tracer:
                 caller_key_name = caller_func
 
             # record the call in the caller dict
-            if self.traces.get(caller_key_name):
-                # get the set of the functions called by the mother function and
-                # add this current function
-                callees = self.traces[caller_key_name]['calls']
-                callees.add(key_name)
-                self.traces[caller_key_name]['calls'] = callees
+            if caller_key_name != key_name: # dont record recursive calls, they cause a recursionError when generating docs
+                if self.traces.get(caller_key_name):
+                    # get the set of the functions called by the mother function and
+                    # add this current function
+                    callees = self.traces[caller_key_name]['calls']
+                    callees.add(key_name)
+                    self.traces[caller_key_name]['calls'] = callees
 
         else:
             pass
 
-        self.traces[key_name] = dict(
-            function_name=key_name,
-            filename=func_filename.replace(self.cwd, ''),
-            caller=caller_key_name,
-            caller_line_num=caller_line_no,
-            caller_file=caller_filename.replace(self.cwd, ''),
-            line_num=func_line_no,
-            call_args=arg_values,
-            call_number=self.call_number,
-            # docstring=docstring,
-            class_name=class_name,
-            calls=OrderedSet(),
-        )
+        # update the dict if it has not been created before
+        if not self.traces.get(key_name):
+            self.traces[key_name] = dict(
+                function_name=key_name,
+                filename=func_filename.replace(self.cwd, ''),
+                caller=caller_key_name,
+                caller_line_num=caller_line_no,
+                caller_file=caller_filename.replace(self.cwd, ''),
+                line_num=func_line_no,
+                call_args=arg_values,
+                call_number=self.call_number,
+                # docstring=docstring,
+                class_name=class_name,
+                calls=OrderedSet(),
+            )
 
         self.call_number += 1
 
