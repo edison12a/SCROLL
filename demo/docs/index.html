@@ -131,7 +131,7 @@
       document.getElementById('func').innerHTML = func_trace['function_name'];
       let func_caller = func_trace['caller'];
       document.getElementById('func-caller').innerHTML = `<a class='callers' name="${func_caller}" onclick="display_func(this)">${func_caller}()</a><br>`
-      document.getElementById('func-code').innerHTML = func_trace['docstring'];
+      document.getElementById('func-code').innerHTML = func_trace['docstring'].trim();
       document.getElementById('return').innerHTML = func_trace['return_type'];
       document.getElementById('file-name').innerHTML = '.' + func_trace['filename'];
     };
@@ -159,7 +159,7 @@
       document.getElementById('func').innerHTML = func_trace['function_name'];
       let func_caller = func_trace['caller'];
       document.getElementById('func-caller').innerHTML = `<a class='callers' href="#${func_caller}" name="${func_caller}" onclick="display_func(this)">${func_caller}()</a><br>`
-      document.getElementById('func-code').innerHTML = func_trace['docstring'];
+      document.getElementById('func-code').innerHTML = func_trace['docstring'].trim();
       document.getElementById('return').innerHTML = func_trace['return_type'];
       document.getElementById('file-name').innerHTML = '.' + func_trace['filename'];
     };
