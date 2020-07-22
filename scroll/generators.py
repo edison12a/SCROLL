@@ -33,7 +33,6 @@ def generate_docs(collected_traces, directory='.'):
 
     order_of_functions.append(entry_function)
     get_calls(entry_function)
-    print(order_of_functions)
 
 
     if not os.path.exists(directory+'/docs'):
@@ -48,5 +47,3 @@ def generate_docs(collected_traces, directory='.'):
 
     with open(directory+'/docs/functions_data.js', 'w') as fc:
         fc.write('let functions='+json.dumps(order_of_functions))
-
-

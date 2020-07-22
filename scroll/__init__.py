@@ -4,7 +4,7 @@ __version__ = "2020.7.20"
 import sys
 import click
 import runpy
-from scroll.runner import MyContextManager
+from scroll.runner import RuntimeContextManager
 from scroll.tracer import Tracer
 from scroll.generators import generate_docs
 import pprint
@@ -13,13 +13,17 @@ import pprint
 @click.command()
 @click.argument('filename')
 def scroll(filename):
-    """Print FILENAME."""
-    click.echo(filename)
-    with MyContextManager(Tracer) as manager:
+    """This is the main controller of the app.
+        It aslo responds to commandline args using click
+    """
+    click.echo(f'SCROLL: Running file {filename}')
+    # use a context manager to enter the file runtime and introspect it
+    with RuntimeContextManager(Tracer) as manager:
         runpy.run_path(filename, run_name='__main__')
     sys.settrace(None)
-
+    click.echo(f'SCROLL: Traces collected')
     collected_traces = manager.traces
     pprint.pprint(collected_traces)
-    # write assets to files
+    # generate docs and write to files
     generate_docs(collected_traces)
+    click.echo(f'SCROLL: Finished generating docs at docs/index.html')
