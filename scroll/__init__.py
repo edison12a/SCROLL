@@ -1,6 +1,7 @@
 """SCROLL: Automatically generates documentation and unit-tests for python programs"""
 __version__ = "2020.7.20"
 
+import os
 import sys
 import click
 import runpy
@@ -25,5 +26,6 @@ def scroll(filename):
     collected_traces = manager.traces
     pprint.pprint(collected_traces)
     # generate docs and write to files
-    generate_docs(collected_traces)
+    directory = os.path.dirname(filename)
+    generate_docs(collected_traces, directory)
     click.echo(f'SCROLL: Finished generating docs at docs/index.html')
