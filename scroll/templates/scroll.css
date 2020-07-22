@@ -25,14 +25,11 @@
 }
 #sidebar {
 	overflow: scroll;
-	height: 100vh;
+	height: 85vh;
 }
 #page-content-wrapper {
 	min-width: 100vw;
-	/* position: fixed; */
-	position: -webkit-sticky;
-	position: sticky;
-	float: left;
+	height: 85vh;
 }
 #wrapper.toggled #sidebar-wrapper {
 	margin-left: 0;
