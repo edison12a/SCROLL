@@ -1,5 +1,6 @@
 import inspect
 import os
+from pprint import pprint
 from scroll.helpers import OrderedSet
 
 class Tracer:
@@ -31,18 +32,17 @@ class Tracer:
             key_name = func_name
 
         if event == 'call':
-            self.handle_call(frame, key_name, func_name, func_filename, class_name)
+            self.handle_call(frame, key_name, class_name)
 
         elif event == 'return':
-            self.handle_return(arg, key_name)
+            self.handle_return(arg, key_name, func_name, frame)
+        return self
 
-    def handle_call(self, frame, key_name, func_name, func_filename, class_name):
+    def handle_call(self, frame, key_name, class_name):
         code = frame.f_code
-        func_name = code.co_name
         func_line_no = frame.f_lineno
         func_filename = code.co_filename
 
-        docstring = None
         arg_names = code.co_varnames[0:code.co_argcount]
         arg_dict = frame.f_locals
 
@@ -56,13 +56,6 @@ class Tracer:
                 #     arg=value,
                 #     type=type(value)
                 # )
-
-        # get doctstring
-        docstring = self.get_docstring(func_name, frame)
-
-        # prevent python object from going into DB
-        if not docstring:
-            doctstring = 'Un-Documented'
 
         # called by?
         caller = frame.f_back
@@ -87,7 +80,6 @@ class Tracer:
 
         else:
             pass
-            # print(caller, func_name)
 
         self.traces[key_name] = dict(
             function_name=key_name,
@@ -98,38 +90,47 @@ class Tracer:
             line_num=func_line_no,
             call_args=arg_values,
             call_number=self.call_number,
-            docstring=docstring,
+            # docstring=docstring,
             class_name=class_name,
             calls=OrderedSet(),
         )
 
         self.call_number += 1
-        return self
 
     def get_docstring(self, func_name, frame):
         if func_name == '__init__':
             class_obj = self.get_class_obj(frame)
             docstring = class_obj.__doc__
         else:
+            # normal function
             func_details = frame.f_globals.get(func_name)
             docstring = func_details.__doc__
         return docstring
 
-    def handle_return(self, arg, key_name):
+    def handle_return(self, arg, key_name, func_name, frame):
+        # get docstring
+        docstring = self.get_docstring(func_name, frame)
+        if docstring is None:
+            try:
+                class_obj = self.get_class_obj(frame)
+                class_method = class_obj.__dict__[func_name]
+                docstring = class_method.__doc__
+            except AttributeError:
+                pass
 
-        # print('RETURN ARGS', key_name, arg)
         call_dict = self.traces.get(key_name, {})
         call_dict.update(
             dict(
                 return_type=type(arg).__name__,
+                docstring=docstring,
                 # return_value=arg,
             )
         )
         self.traces[key_name] = call_dict
-        return self
 
     def get_class_name(self, frame):
         class_obj = self.get_class_obj(frame)
+        # print(dir(class_obj))
         if class_obj:
             class_name = class_obj.__name__
         else:

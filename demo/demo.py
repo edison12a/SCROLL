@@ -18,7 +18,7 @@ class Age:
         """
         year_today = datetime.datetime.today().year
         age = year_today-yob
-        return yob
+        return age
 
 
 def calculate_bmi(weight, height):
