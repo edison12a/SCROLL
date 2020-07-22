@@ -1,5 +1,5 @@
 """SCROLL: Automatically generates documentation and unit-tests for python programs"""
-__version__ = "2020.7.23"
+__version__ = "2020.7.24"
 
 import os
 import sys
@@ -9,6 +9,7 @@ from scroll.runner import RuntimeContextManager
 from scroll.tracer import Tracer
 from scroll.generators import generate_docs
 import pprint
+import pickle
 
 
 @click.command()
@@ -24,7 +25,7 @@ def scroll(filename):
     sys.settrace(None)
     click.echo(f'SCROLL: Traces collected')
     collected_traces = manager.traces
-    # pickle.dump(collected_traces, open( "collected_traces.pkl", "wb"))
+    pickle.dump(collected_traces, open( "collected_traces.pkl", "wb"))
     # collected_traces = pickle.load(open( "collected_traces.pkl", "rb" ))
     pprint.pprint(collected_traces)
     # generate docs and write to files

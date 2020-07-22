@@ -24,19 +24,18 @@ def generate_docs(collected_traces, directory):
     collected_traces['entry_function'] = entry_function
 
      # create order of functions // classes of docs html file
-    order_of_functions = set()
+    order_of_functions = []
 
     def get_calls(trace_name):
-        # print(trace_name)
         trace = collected_traces[trace_name]
-        # print(trace['calls'])
         for call in trace['calls']:
-            order_of_functions.add(collected_traces[call]['function_name'])
-            get_calls(collected_traces[call]['function_name'])
+            func_name = collected_traces[call]['function_name']
+            if not func_name in order_of_functions:
+                order_of_functions.append(func_name)
+            get_calls(func_name)
 
-    order_of_functions.add(entry_function)
+    order_of_functions.append(entry_function)
     get_calls(entry_function)
-    order_of_functions = list(order_of_functions)
 
     if not os.path.exists(directory+'/docs'):
         os.makedirs(directory+'/docs')

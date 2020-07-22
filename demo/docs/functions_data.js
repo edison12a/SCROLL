@@ -1,1 +1,1 @@
-let functions=["calculate_bmi", "main", "Age.__init__", "Age.get_age"]
+let functions=["main", "Age.__init__", "Age.get_age", "calculate_bmi"]
