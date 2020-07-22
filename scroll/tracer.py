@@ -25,7 +25,10 @@ class Tracer:
 
         # get function class name
         class_name = self.get_class_name(frame)
-        key_name = f"{class_name}.{func_name}"
+        if not 'None' in class_name:
+            key_name = f"{class_name}.{func_name}"
+        else:
+            key_name = func_name
 
         if event == 'call':
             self.handle_call(frame, key_name, func_name, func_filename, class_name)
@@ -69,7 +72,10 @@ class Tracer:
             caller_filename = caller.f_code.co_filename
 
             caller_class = self.get_class_name(caller)
-            caller_key_name = f"{caller_class}.{caller_func}"
+            if not 'None' in caller_class:
+                caller_key_name = f"{caller_class}.{caller_func}"
+            else:
+                caller_key_name = caller_func
 
             # record the call in the caller dict
             if self.traces.get(caller_key_name):
@@ -127,7 +133,7 @@ class Tracer:
         if class_obj:
             class_name = class_obj.__name__
         else:
-            class_name = None
+            class_name = 'None'
         return class_name
 
     def get_class_obj(self, frame):
