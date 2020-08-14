@@ -5,7 +5,8 @@ SCROLL: Automatically generates documentation and unit-tests for python programs
 
 [![PyPI version](https://badge.fury.io/py/scroll.svg)](https://badge.fury.io/py/scroll)
 [![Downloads](https://pepy.tech/badge/scroll)](https://pepy.tech/project/scroll)
-[![Python 3.6](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.6+](https://img.shields.io/badge/python-3.6+-blue.svg)](https://www.python.org/downloads/)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/ambv/black)
 
 
 ## How it works
