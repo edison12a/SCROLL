@@ -31,5 +31,5 @@ keywords="scroll documentation unit tests"
 
 [tool.flit.metadata.urls]
 Bug-Tracker="https://github.com/SimiCode/SCROLL/issues"
-Documentation="https://github.com/SimiCode/SCROLL/README.md"
-Source-Code="https://github.com/SimiCode/SCROLL/scroll"
+Documentation="https://github.com/SimiCode/SCROLL/blob/master/README.md"
+Source-Code="https://github.com/SimiCode/SCROLL/"
