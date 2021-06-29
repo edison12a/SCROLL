@@ -11,7 +11,7 @@ SCROLL: Automatically generates documentation and unit-tests for python programs
 
 ## How it works
 This tool monitors your function calls and returns while you "exercise" you program (i.e run functional tests).
-It will collect this information (traces), record the order in which your functions run and generate documentations / tests using that information.
+It will collect this information (traces), record the order in which your functions run and generate documentation / tests using that information.
 
 
 # Design concept
