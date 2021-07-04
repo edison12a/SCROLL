@@ -1,5 +1,5 @@
 """SCROLL: Automatically generates documentation and unit-tests for python programs"""
-__version__ = "2020.7.24"
+__version__ = "2021.7.4"
 
 import os
 import sys
