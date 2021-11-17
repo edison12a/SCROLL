@@ -1,5 +1,6 @@
 import collections
 
+
 class OrderedSet(collections.OrderedDict, collections.MutableSet):
     # https://stackoverflow.com/questions/1653970/does-python-have-an-ordered-set
 

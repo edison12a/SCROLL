@@ -2,14 +2,16 @@
 __version__ = "2021.7.4"
 
 import os
-import sys
-import click
+import pickle
+import pprint
 import runpy
+import sys
+
+import click
+
+from scroll.generators import generate_docs
 from scroll.runner import RuntimeContextManager
 from scroll.tracer import Tracer
-from scroll.generators import generate_docs
-import pprint
-import pickle
 
 
 @click.command()

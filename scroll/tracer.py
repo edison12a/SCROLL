@@ -1,7 +1,8 @@
 import inspect
 import os
-from pprint import pprint
+
 from scroll.helpers import OrderedSet
+
 
 class Tracer:
     def __init__(self):
