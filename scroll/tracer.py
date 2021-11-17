@@ -65,7 +65,7 @@ class Tracer:
             caller_filename = caller.f_code.co_filename
 
             caller_class = self.get_class_name(caller)
-            if not 'None' in caller_class:
+            if 'None' not in caller_class:
                 caller_key_name = f"{caller_class}.{caller_func}"
             else:
                 caller_key_name = caller_func
