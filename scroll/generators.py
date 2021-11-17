@@ -20,6 +20,9 @@ def generate_docs(collected_traces, directory):
         if numbered_traces[num]['calls']:
             entry_function = numbered_traces[num]['function_name']
             break
+    else:
+        raise Exception("Entry function not found")
+
     # add entry function to traces
     collected_traces['entry_function'] = entry_function
 
