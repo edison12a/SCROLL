@@ -59,8 +59,8 @@ scroll main.py
 - add creating of SCROLL.md that has scroll of all functions
 
 ## Contributing
+To get started contributing, visit the [CONTRIBUTING GUIDE](./CONTRIBUTING.md)
 
-To get started contributing, Visit the [CONTRIBUTING GUIDE](./CONTRIBUTING.MD)
 
 
 ## Contributors and acknowledgment
