@@ -32,7 +32,7 @@ To install using wheel files, Check in [Distribution files](./dist)
 Lets say your file which contains the main entry function is called main.py
 
 ### An example main file with an entry function
-```
+```py
 # main.py
 
 def run():
