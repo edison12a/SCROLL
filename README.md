@@ -32,11 +32,11 @@ To install using wheel files, Check in [Distribution files](./dist)
 Lets say your file which contains the main entry function is called main.py
 
 ### An example main file with an entry function
-```
+```py
 # main.py
 
 def run():
-    '''this is your singlr entry function'''
+    '''this is your singular entry function'''
     # your code here
 
 
@@ -51,16 +51,16 @@ scroll main.py
 
 
 ## How about some guidelines?
-- There should be only one main entry function into you code
-- 
+- There should be only one main entry function in your code
+
 
 ## To-Do
 - add creating of url with class name / func name ancored on it
 - add creating of SCROLL.md that has scroll of all functions
 
 ## Contributing
+To get started contributing, visit the [CONTRIBUTING GUIDE](./CONTRIBUTING.md)
 
-To get started contributing, Visit the [CONTRIBUTING GUIDE](./CONTRIBUTING.MD)
 
 
 ## Contributors and acknowledgment
@@ -70,7 +70,7 @@ To get started contributing, Visit the [CONTRIBUTING GUIDE](./CONTRIBUTING.MD)
 ## Similar Libraries that do Runtime-Introspection:
 1. [pythoscope](https://github.com/mkwiatkowski/pythoscope) for Auto unit-test generation
 2. [auger](https://github.com/laffra/auger) for Auto Unit-test generation
-3. [MonkeyType](https://github.com/Instagram/MonkeyType) for auto Auto Type hinting /  Annotation
+3. [MonkeyType](https://github.com/Instagram/MonkeyType) for Auto Type hinting /  Annotation
 4. [hypothesis](https://hypothesis.readthedocs.io/en/latest/index.html) for Auto test-case generation
 
 

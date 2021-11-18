@@ -1,5 +1,6 @@
 import collections
 
+
 class OrderedSet(collections.OrderedDict, collections.MutableSet):
     # https://stackoverflow.com/questions/1653970/does-python-have-an-ordered-set
 
@@ -9,7 +10,7 @@ class OrderedSet(collections.OrderedDict, collections.MutableSet):
 
         for s in args:
             for e in s:
-                 self.add(e)
+                self.add(e)
 
     def add(self, elem):
         self[elem] = None
@@ -30,8 +31,7 @@ class OrderedSet(collections.OrderedDict, collections.MutableSet):
         return self >= other and self != other
 
     def __repr__(self):
-        return 'OrderedSet([%s])' % (', '.join(map(repr, self.keys())))
+        return "OrderedSet([%s])" % (", ".join(map(repr, self.keys())))
 
     def __str__(self):
-        return '{%s}' % (', '.join(map(repr, self.keys())))
-
+        return "{%s}" % (", ".join(map(repr, self.keys())))
